@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All about Hannah</title>
+
+    <!-- Google Fonts: Quicksand -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: linear-gradient(to right, #c1d9f5, #729dcf);
+            height: 100vh; 
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+            color: #2b3a4a;
+
+            /* Lays out the 3 main columns horizontally across the screen */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        /* 1. LEFT COLUMN: Keeps your exact 3-section vertical layout! */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 80vh; 
+            width: 350px;
+            background-color: rgba(255, 255, 255, 0.35);
+            padding: 20px;
+            border-radius: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Inner styling for your left section elements */
+        .top-section {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .middle-section {
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .middle-section h1 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+        }
+
+        .bottom-section {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* 2. MIDDLE COLUMN */
+        .middle-column {
+            height: 80vh;
+            width: 320px;
+            background-color: rgba(255, 255, 255, 0.35);
+            padding: 30px;
+            border-radius: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* 3. RIGHT COLUMN */
+        .right-column {
+            height: 80vh;
+            width: 280px;
+            background-color: rgba(255, 255, 255, 0.35);
+            padding: 30px;
+            border-radius: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* Instagram Logo Styling & Hover Effect */
+        .instagram-link {
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .instagram-icon {
+            width: 36px;
+            height: 36px;
+            fill: #2b3a4a; /* Matches your theme text color */
+            transition: transform 0.2s ease, fill 0.2s ease;
+        }
+
+        .instagram-icon:hover {
+            fill: #e1306c; /* Changes to Instagram pink when hovered */
+            transform: scale(1.15); /* Gives it a cute bounce */
+        }
+
+
+        /* Expanding Accordion Cards */
+        .accordion-item {
+            background-color: rgba(255, 255, 255, 0.45);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .accordion-item summary {
+            padding: 12px 16px;
+            font-weight: 700;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        /* Removes the default arrow indicator in Chrome/Safari */
+        .accordion-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* Custom rotating arrow icon */
+        .accordion-item summary::after {
+            content: '✦';
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+            color: #729dcf;
+        }
+
+        /* Rotates the symbol when expanded */
+        .accordion-item[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            padding: 0 16px 14px 16px;
+            font-size: 0.95rem;
+            color: #2b3a4a;
+            line-height: 1.4;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SECTION 1: LEFT -->
+    <div class="left-column">
+        <div class="top-section">
+            Hello everyonee-!
+        </div>
+
+        <div class="middle-section">
+            <h1>I'm Hannah!</h1>
+            <p>Welcome to my pageee ♡</p>
+            <p>KR - 2012.04.01 🎂 - 해나</p>
+        </div>
+
+         <!-- Replacing "I Lovee" with Music Player Display -->
+        <div class="music-player">
+            <div class="music-info">
+                <span class="music-icon">🎵</span>
+                <div class="track-details">
+                    <span class="song-title">Now Playing 🎧</span>
+                    <span class="artist-name">Artist Name - Track Title</span>
+                </div>
+            </div>
+<br>
+            <!-- Audio Player -->
+            <audio controls class="audio-control">
+                <source src="your-song-file.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="bottom-section">
+            Hehehehee
+        </div>
+    </div>
+
+    <!-- SECTION 2: MIDDLE -->
+   <!-- SECTION 2: MIDDLE -->
+    <div class="middle-column">
+        <h2>Things I Like 🤍</h2>
+
+        <details class="accordion-item">
+            <summary>My Favorite Color</summary>
+            <div class="accordion-content">
+                Blueee, especially light bluee! And any other colors that are bright :D
+            </div>
+        </details>
+
+        <details class="accordion-item">
+            <summary>Strawberries? </summary>
+            <div class="accordion-content">
+              Yes yes I LUVV STRAWBERRIESS 🍓
+            </div>
+        </details>
+
+        <details class="accordion-item">
+            <summary>My Hobbies</summary>
+            <div class="accordion-content">
+                Playing Piano ♪♪ <br> Crocheting <br> Watching/playing Football <br> Robotics <br> And talking with you all ❤
+            </div>
+        </details>
+
+        <details class="accordion-item">
+            <summary>Favorite Music 🎵</summary>
+            <div class="accordion-content">
+                Hmmm..? Any recommendatons?
+            </div>
+        </details>
+    </div>
+
+    <!-- SECTION 3: RIGHT -->
+    <div class="right-column">
+        <h2>My SNS accounts</h2>
+        <p>Maybe find me in..?</p>
+
+        <!-- Official Instagram SVG Link -->
+        <a href="https://www.instagram.com/_hannah_shin_" target="_blank" class="instagram-link">
+            <svg class="instagram-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+        </a>
+    </div>
+
+</body>
+</html>
