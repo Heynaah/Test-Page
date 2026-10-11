@@ -174,6 +174,71 @@
     filter: drop-shadow(-2px 2px 0px #fe2c55); 
     transform: scale(1.15);
 }
+
+        /* Windows Style Container */
+.win-window {
+    width: 100%;
+    max-width: 280px;
+    margin: 15px auto 0 auto;
+    background-color: #c0c0c0; /* Classic Windows Light Grey */
+    border: 2px solid;
+    border-color: #ffffff #808080 #808080 #ffffff; /* 3D bevel edges */
+    font-family: 'Tahoma', 'Segoe UI', sans-serif;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Windows Title Bar */
+.win-title-bar {
+    background: linear-gradient(to right, #000080, #1084d0); /* Classic Windows Blue gradient */
+    padding: 3px 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Windows Action Buttons (_ ◽ X) */
+.win-buttons {
+    display: flex;
+    gap: 3px;
+}
+
+.win-btn {
+    width: 16px;
+    height: 14px;
+    background-color: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #808080 #808080 #ffffff;
+    font-size: 0.65rem;
+    font-weight: bold;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.win-btn:active {
+    border-color: #808080 #ffffff #ffffff #808080;
+}
+
+/* Windows Content Area */
+.win-content {
+    background-color: #ffffff;
+    margin: 4px;
+    padding: 10px;
+    border: 2px solid;
+    border-color: #808080 #ffffff #ffffff #808080; /* Sunken box effect */
+    max-height: 120px;
+    overflow-y: auto;
+    font-size: 0.85rem;
+    color: #000000;
+    white-space: pre-line;
+}
     </style>
 </head>
 <body>
@@ -206,7 +271,31 @@
                 Your browser does not support the audio element.
             </audio>
         </div>
+<details class="accordion-item">
+    <summary>✦ More for lyrics....</summary>
 
+    <!-- Windows Retro Tab -->
+    <div class="win-window">
+        
+        <!-- Top Bar with Title & Windows Buttons -->
+        <div class="win-title-bar">
+            <span>lyrics.txt - Notepad</span>
+            <div class="win-buttons">
+                <button class="win-btn" title="Minimize">_</button>
+                <button class="win-btn" title="Maximize">◽</button>
+                <button class="win-btn" title="Close">✕</button>
+            </div>
+        </div>
+
+        <!-- Inside Box with Lyrics -->
+        <div class="win-content">
+            Paste your song lyrics here!
+            Line 2 of the lyrics...
+            Line 3 of the lyrics...
+        </div>
+
+    </div>
+</details>
         <div class="bottom-section">
             Hehehehee
         </div>
@@ -265,6 +354,7 @@
         
 </a>
     </div>
+
 
 
 </body>
