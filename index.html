@@ -178,7 +178,6 @@
 .lyrics-trigger {
     color: #8fa3bc;
     font-size: 0.85rem;
-    text-decoration: none;
     font-weight: 600;
     cursor: pointer;
     transition: color 0.2s ease;
@@ -190,69 +189,68 @@
     color: #4a6fa5;
 }
 
-/* Modern Frosted Glass Modal */
-.lyrics-modal {
-    border: none;
-    background: transparent;
-    padding: 0;
+/* Draggable Floating Window */
+.floating-window {
+    display: none; /* Hidden until clicked */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 320px;
     max-width: 90vw;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.lyrics-modal::backdrop {
-    background: rgba(114, 157, 207, 0.3);
-    backdrop-filter: blur(4px);
-}
-
-/* Modal Box */
-.modern-window {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
     overflow: hidden;
     font-family: 'Quicksand', sans-serif;
 }
 
-/* Clean Header */
-.modern-header {
+/* Draggable Header Bar */
+.window-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.5);
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    cursor: grab; /* Shows hand grab icon */
+    user-select: none;
 }
 
-.modern-title {
+.window-header:active {
+    cursor: grabbing; /* Shows closed fist when dragging */
+}
+
+.window-title {
     font-size: 0.85rem;
     font-weight: 700;
     color: #2b3a4a;
 }
 
-.modern-close-btn {
+.close-btn {
     background: none;
     border: none;
     font-size: 1.1rem;
     cursor: pointer;
     color: #8fa3bc;
-    transition: color 0.2s ease;
     padding: 0;
     line-height: 1;
 }
 
-.modern-close-btn:hover {
+.close-btn:hover {
     color: #2b3a4a;
 }
 
-/* Content Area */
-.modern-content {
+/* Lyrics Content */
+.window-content {
     padding: 20px;
     font-size: 0.9rem;
     color: #333333;
     line-height: 1.6;
-    max-height: 220px;
+    max-height: 200px;
     overflow-y: auto;
     text-align: left;
     white-space: pre-line;
