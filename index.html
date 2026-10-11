@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>All about Hannah</title>
+    <title>heananahane</title>
 
     <!-- Google Fonts: Quicksand -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -174,69 +174,87 @@
     filter: drop-shadow(-2px 2px 0px #fe2c55); 
     transform: scale(1.15);
 }
-
-        /* Windows Style Container */
-.win-window {
-    width: 100%;
-    max-width: 280px;
-    margin: 15px auto 0 auto;
-    background-color: #c0c0c0; /* Classic Windows Light Grey */
-    border: 2px solid;
-    border-color: #ffffff #808080 #808080 #ffffff; /* 3D bevel edges */
-    font-family: 'Tahoma', 'Segoe UI', sans-serif;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+/* Subtle Modern Link */
+.lyrics-trigger {
+    color: #8fa3bc;
+    font-size: 0.85rem;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    display: inline-block;
+    margin-top: 10px;
 }
 
-/* Windows Title Bar */
-.win-title-bar {
-    background: linear-gradient(to right, #000080, #1084d0); /* Classic Windows Blue gradient */
-    padding: 3px 6px;
+.lyrics-trigger:hover {
+    color: #4a6fa5;
+}
+
+/* Modern Frosted Glass Modal */
+.lyrics-modal {
+    border: none;
+    background: transparent;
+    padding: 0;
+    width: 320px;
+    max-width: 90vw;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.lyrics-modal::backdrop {
+    background: rgba(114, 157, 207, 0.3);
+    backdrop-filter: blur(4px);
+}
+
+/* Modal Box */
+.modern-window {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* Clean Header */
+.modern-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
-    font-size: 0.8rem;
-    font-weight: bold;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-/* Windows Action Buttons (_ ◽ X) */
-.win-buttons {
-    display: flex;
-    gap: 3px;
+.modern-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #2b3a4a;
 }
 
-.win-btn {
-    width: 16px;
-    height: 14px;
-    background-color: #c0c0c0;
-    border: 1px solid;
-    border-color: #ffffff #808080 #808080 #ffffff;
-    font-size: 0.65rem;
-    font-weight: bold;
-    color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.modern-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
     cursor: pointer;
+    color: #8fa3bc;
+    transition: color 0.2s ease;
     padding: 0;
     line-height: 1;
 }
 
-.win-btn:active {
-    border-color: #808080 #ffffff #ffffff #808080;
+.modern-close-btn:hover {
+    color: #2b3a4a;
 }
 
-/* Windows Content Area */
-.win-content {
-    background-color: #ffffff;
-    margin: 4px;
-    padding: 10px;
-    border: 2px solid;
-    border-color: #808080 #ffffff #ffffff #808080; /* Sunken box effect */
-    max-height: 120px;
+/* Content Area */
+.modern-content {
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #333333;
+    line-height: 1.6;
+    max-height: 220px;
     overflow-y: auto;
-    font-size: 0.85rem;
-    color: #000000;
+    text-align: left;
     white-space: pre-line;
 }
     </style>
@@ -265,36 +283,37 @@
                 </div>
             </div>
 <br>
+        
             <!-- Audio Player -->
             <audio controls class="audio-control">
                 <source src="your-song-file.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
         </div>
-<details class="accordion-item">
-    <summary>✦ More for lyrics....</summary>
+        <!-- Trigger Link -->
+<span class="lyrics-trigger" onclick="document.getElementById('lyricsModal').showModal()">
+    &gt; More for lyrics...
+</span>
 
-    <!-- Windows Retro Tab -->
-    <div class="win-window">
+<!-- Modern Pop-up Modal -->
+<dialog id="lyricsModal" class="lyrics-modal">
+    <div class="modern-window">
         
-        <!-- Top Bar with Title & Windows Buttons -->
-        <div class="win-title-bar">
-            <span>lyrics.txt - Notepad</span>
-            <div class="win-buttons">
-                <button class="win-btn" title="Minimize">_</button>
-                <button class="win-btn" title="Maximize">◽</button>
-                <button class="win-btn" title="Close">✕</button>
-            </div>
+        <!-- Header -->
+        <div class="modern-header">
+            <span class="modern-title">lyrics.txt</span>
+            <button class="modern-close-btn" onclick="document.getElementById('lyricsModal').close()">✕</button>
         </div>
 
-        <!-- Inside Box with Lyrics -->
-        <div class="win-content">
+        <!-- Content -->
+        <div class="modern-content">
             Paste your song lyrics here!
-            Line 2 of the lyrics...
-            Line 3 of the lyrics...
+            Line 2 of lyrics...
+            Line 3 of lyrics...
         </div>
 
     </div>
+</dialog>
 </details>
         <div class="bottom-section">
             Hehehehee
