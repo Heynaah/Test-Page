@@ -208,37 +208,37 @@
                 Your browser does not support the audio element.
             </audio>
         </div>
-        <!-- Trigger Link -->
-<span class="lyrics-trigger" onclick="document.getElementById('lyricsModal').showModal()">
-    &gt; More for lyrics...
-</span>
-
-<!-- Modern Pop-up Modal -->
-<dialog id="lyricsModal" class="lyrics-modal">
-    <div class="modern-window">
-        
-        <!-- Header -->
-        <div class="modern-header">
-            <span class="modern-title">lyrics.txt</span>
-            <button class="modern-close-btn" onclick="document.getElementById('lyricsModal').close()">✕</button>
-        </div>
-
-        <!-- Content -->
-        <div class="modern-content">
-            Paste your song lyrics here!
-            Line 2 of lyrics...
-            Line 3 of lyrics...
-        </div>
-
+<!-- FLOATING TABBED WINDOW -->
+<div id="lyricsWindow" class="floating-window">
+    <div id="lyricsHeader" class="window-header">
+        <span class="window-title">Hannah's Media Player</span>
+        <button class="close-btn" onclick="closeLyricsTab()">✕</button>
     </div>
-</dialog>
-</details>
+
+    <!-- Cute Tab Navigation Bar -->
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchTab(event, 'lyricsTab')">Lyrics</button>
+        <button class="tab-btn" onclick="switchTab(event, 'notesTab')">Notes</button>
+    </div>
+
+    <!-- Lyrics Tab Content -->
+    <div id="lyricsTab" class="tab-pane active">
+        Paste song lyrics here!
+        Line 2 of lyrics...
+        Line 3 of lyrics...
+    </div>
+
+    <!-- Notes Tab Content -->
+    <div id="notesTab" class="tab-pane">
+        Add extra notes or track details here!
+    </div>
+</div>
         <div class="bottom-section">
             Hehehehee
         </div>
     </div>
 
-    <!-- SECTION 2: MIDDLE -->
+
    <!-- SECTION 2: MIDDLE -->
     <div class="middle-column">
         <h2>Things I Like 🤍</h2>
@@ -292,4 +292,110 @@
 </a>
     </div>
 
+    
+<script>
+    function openLyricsTab() {
+        const win = document.getElementById("lyricsWindow");
+        win.style.display = "block";
+        // Reset to center each time it opens
+        win.style.top = "50%";
+        win.style.left = "50%";
+        win.style.transform = "translate(-50%, -50%)";
+    }
+
+    function closeLyricsTab() {
+        document.getElementById("lyricsWindow").style.display = "none";
+    }
+
+    function switchTab(evt, tabName) {
+        let panes = document.getElementsByClassName("tab-pane");
+        for (let i = 0; i < panes.length; i++) {
+            panes[i].classList.remove("active");
+        }
+
+        let buttons = document.getElementsByClassName("tab-btn");
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].classList.remove("active");
+        }
+
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+
+    // --- BULLETPROOF DRAG LOGIC ---
+    const dragItem = document.getElementById("lyricsWindow");
+    const dragHeader = document.getElementById("lyricsHeader");
+
+    let active = false;
+    let currentX;
+    let currentY;
+    let initialX;
+    let initialY;
+    let xOffset = 0;
+    let yOffset = 0;
+
+    // Mouse events
+    dragHeader.addEventListener("mousedown", dragStart);
+    document.addEventListener("mouseup", dragEnd);
+    document.addEventListener("mousemove", drag);
+
+    // Touch events for mobile/tablets
+    dragHeader.addEventListener("touchstart", dragStart);
+    document.addEventListener("touchend", dragEnd);
+    document.addEventListener("touchmove", drag);
+
+    function dragStart(e) {
+        // Clear transform translate centering so raw coordinates take over
+        if (dragItem.style.transform !== "none") {
+            const rect = dragItem.getBoundingClientRect();
+            dragItem.style.transform = "none";
+            dragItem.style.left = rect.left + "px";
+            dragItem.style.top = rect.top + "px";
+            xOffset = rect.left;
+            yOffset = rect.top;
+        } else {
+            xOffset = dragItem.offsetLeft;
+            yOffset = dragItem.offsetTop;
+        }
+
+        if (e.type === "touchstart") {
+            initialX = e.touches[0].clientX - xOffset;
+            initialY = e.touches[0].clientY - yOffset;
+        } else {
+            initialX = e.clientX - xOffset;
+            initialY = e.clientY - yOffset;
+        }
+
+        if (e.target === dragHeader || dragHeader.contains(e.target)) {
+            // Make sure clicking the close button doesn't trigger drag
+            if (e.target.tagName !== 'BUTTON') {
+                active = true;
+            }
+        }
+    }
+
+    function dragEnd() {
+        initialX = currentX;
+        initialY = currentY;
+        active = false;
+    }
+
+    function drag(e) {
+        if (active) {
+            e.preventDefault();
+
+            if (e.type === "touchmove") {
+                currentX = e.touches[0].clientX - initialX;
+                currentY = e.touches[0].clientY - initialY;
+            } else {
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+            }
+
+            dragItem.style.left = currentX + "px";
+            dragItem.style.top = currentY + "px";
+        }
+    }
+</script>
+    </body>
 </html>
