@@ -174,12 +174,119 @@
     filter: drop-shadow(-2px 2px 0px #fe2c55); 
     transform: scale(1.15);
 }
+        /* Tabbed Floating Window */
+        .floating-window {
+            display: none; /* Hidden by default until you click the link */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 340px;
+            max-width: 90vw;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        /* Draggable Header Bar */
+        .window-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: rgba(230, 238, 248, 0.6);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            cursor: grab;
+            user-select: none;
+        }
+
+        .window-header:active {
+            cursor: grabbing;
+        }
+
+        .window-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #4a6fa5;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            color: #8fa3bc;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: #2b3a4a;
+        }
+
+        /* Tabs Container */
+        .tab-container {
+            display: flex;
+            background: rgba(240, 244, 250, 0.8);
+            padding: 8px 10px 0 10px;
+            gap: 6px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        /* Tab Buttons */
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: none;
+            padding: 8px 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #8fa3bc;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:hover {
+            color: #4a6fa5;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .tab-btn.active {
+            background: #ffffff;
+            color: #2b3a4a;
+            border-color: rgba(0, 0, 0, 0.08);
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Tab Content Panes */
+        .tab-pane {
+            display: none; /* Hidden unless active */
+            background: #ffffff;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #333333;
+            line-height: 1.6;
+            max-height: 200px;
+            overflow-y: auto;
+            text-align: left;
+            white-space: pre-line;
+        }
+
+        .tab-pane.active {
+            display: block; /* Shows only the active tab */
+        }
 
     </style>
 </head>
 <body>
 
-    <!-- SECTION 1: LEFT -->
+ <!-- SECTION 1: LEFT -->
     <div class="left-column">
         <div class="top-section">
             Hello everyonee-!
@@ -191,53 +298,36 @@
             <p>KR - 2012.04.01 🎂 - 해나</p>
         </div>
 
-         <!-- Replacing "I Lovee" with Music Player Display -->
+        <!-- Music Player Display -->
         <div class="music-player">
             <div class="music-info">
                 <span class="music-icon">MUSICCCC</span>
                 <div class="track-details">
-                    <span class="song-title">Now Playing 🎧</span>
+                    <span class="song-title">Now Playing 🎧</span><br>
                     <span class="artist-name">Artist Name - Track Title</span>
                 </div>
             </div>
-<br>
+
+            <br>
         
             <!-- Audio Player -->
             <audio controls class="audio-control">
                 <source src="your-song-file.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
+
+            <br>
+
+            <!-- Trigger Link (Back in place!) -->
+            <span class="lyrics-trigger" onclick="openLyricsTab()">
+                &gt; More for lyrics...
+            </span>
         </div>
-<!-- FLOATING TABBED WINDOW -->
-<div id="lyricsWindow" class="floating-window">
-    <div id="lyricsHeader" class="window-header">
-        <span class="window-title">Hannah's Media Player</span>
-        <button class="close-btn" onclick="closeLyricsTab()">✕</button>
-    </div>
 
-    <!-- Cute Tab Navigation Bar -->
-    <div class="tab-container">
-        <button class="tab-btn active" onclick="switchTab(event, 'lyricsTab')">Lyrics</button>
-        <button class="tab-btn" onclick="switchTab(event, 'notesTab')">Notes</button>
-    </div>
-
-    <!-- Lyrics Tab Content -->
-    <div id="lyricsTab" class="tab-pane active">
-        Paste song lyrics here!
-        Line 2 of lyrics...
-        Line 3 of lyrics...
-    </div>
-
-    <!-- Notes Tab Content -->
-    <div id="notesTab" class="tab-pane">
-        Add extra notes or track details here!
-    </div>
-</div>
         <div class="bottom-section">
             Hehehehee
         </div>
     </div>
-
 
    <!-- SECTION 2: MIDDLE -->
     <div class="middle-column">
@@ -292,7 +382,26 @@
 </a>
     </div>
 
-    
+    <!-- FLOATING WINDOW -->
+    <div id="lyricsWindow" class="floating-window">
+        <div id="lyricsHeader" class="window-header">
+            <span class="window-title">Hannah's Media Player</span>
+            <button class="close-btn" onclick="closeLyricsTab()">✕</button>
+        </div>
+
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="switchTab(event, 'lyricsTab')">Lyrics</button>
+            <button class="tab-btn" onclick="switchTab(event, 'notesTab')">Notes</button>
+        </div>
+
+        <div id="lyricsTab" class="tab-pane active">
+            Paste song lyrics here!
+        </div>
+
+        <div id="notesTab" class="tab-pane">
+            Add extra notes or track details here!
+        </div>
+    </div>
 <script>
     function openLyricsTab() {
         const win = document.getElementById("lyricsWindow");
