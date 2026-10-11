@@ -32,7 +32,7 @@
             flex-direction: column;
             justify-content: flex-start; /* Changes from space-between to start from top */
             align-items: center;
-            gap: 20px; /* Adds nice, even spacing between your sections */
+            gap: 30px; /* Adds nice, even spacing between your sections */
             height: 80vh; 
             width: 350px;
             background-color: rgba(255, 255, 255, 0.35);
@@ -175,6 +175,28 @@
     filter: drop-shadow(-2px 2px 0px #fe2c55); 
     transform: scale(1.15);
 }
+
+        /* Snapchat Logo Styling & Hover Effect */
+        .snapchat-link {
+            display: inline-block;
+            margin-top: 15px;
+            margin-left: 10px; /* Keeps nice spacing next to your other icons */
+        }
+
+        .snapchat-icon {
+            width: 36px;
+            height: 36px;
+            fill: #2b3a4a; /* Matches your text color theme by default */
+            transition: transform 0.2s ease, fill 0.2s ease, filter 0.2s ease;
+        }
+
+        .snapchat-icon:hover {
+            fill: #fffc00; /* Snapchat Bright Yellow */
+            /* Adds a cute dark drop-shadow so the yellow pops against the background */
+            filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2)); 
+            transform: scale(1.15); /* Gives it the same bounce as your other icons */
+        }
+        
         /* Tabbed Floating Window */
         .floating-window {
             display: none; /* Hidden by default until you click the link */
@@ -402,6 +424,13 @@
     </svg>
         
 </a>
+
+        <!-- Official Snapchat SVG Link -->
+        <a href="https://www.snapchat.com/add/hannah.shin" target="_blank" class="snapchat-link" aria-label="Snapchat">
+            <svg class="snapchat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12.016 2c-3.18 0-6.104 2.13-6.104 5.378 0 1.954 1.135 3.327 1.97 4.095-.503.424-1.127 1.054-1.127 1.91 0 .614.364 1.144.912 1.41-.097.35-.436 1.458.745 2.115.825.454 2.113.782 3.593.782 1.48 0 2.768-.328 3.593-.782 1.18-.657.842-1.765.745-2.115.548-.266.912-.796.912-1.41 0-.856-.624-1.486-1.127-1.91.835-.768 1.97-2.14 1.97-4.095C18.12 4.13 15.196 2 12.016 2z"/>
+            </svg>
+        </a>
     </div>
 
     <!-- FLOATING WINDOW -->
@@ -522,6 +551,14 @@
                 currentX = e.clientX - initialX;
                 currentY = e.clientY - initialY;
             }
+
+            // Clamps it so it stays inside the screen bounds!
+            const modalRect = dragItem.getBoundingClientRect();
+            const maxX = window.innerWidth - modalRect.width;
+            const maxY = window.innerHeight - modalRect.height;
+
+            currentX = Math.max(0, Math.min(currentX, maxX));
+            currentY = Math.max(0, Math.min(currentY, maxY));
 
             dragItem.style.left = currentX + "px";
             dragItem.style.top = currentY + "px";
