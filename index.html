@@ -27,17 +27,18 @@
         }
 
         /* 1. LEFT COLUMN: Keeps your exact 3-section vertical layout! */
-        .left-column {
+.left-column {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start; /* Changes from space-between to start from top */
             align-items: center;
+            gap: 20px; /* Adds nice, even spacing between your sections */
             height: 80vh; 
             width: 350px;
             background-color: rgba(255, 255, 255, 0.35);
             padding: 20px;
-            border-radius: 20px;
             box-sizing: border-box;
+            border-radius: 20px;
         }
 
         /* Inner styling for your left section elements */
@@ -226,6 +227,27 @@
 
         .close-btn:hover {
             color: #2b3a4a;
+        }
+        .lyrics-trigger {
+            color: #729dcf; /* Nice starting pastel color */
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: underline;
+            display: inline-block;
+            margin-top: 10px;
+            transition: color 0.15s ease, transform 0.1s ease;
+        }
+
+        /* Turns darker blue when you hover over it */
+        .lyrics-trigger:hover {
+            color: #2b3a4a;
+        }
+
+        /* Gets even darker & slightly presses down when clicked */
+        .lyrics-trigger:active {
+            color: #1a2530; 
+            transform: scale(0.95);
         }
 
         /* Tabs Container */
